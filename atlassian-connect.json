@@ -1,0 +1,49 @@
+{
+  "key": "com.varun.workflowfunction.example",
+  "name": "Connect workflow example from Varun",
+  "description": "Example workflow post function add-on from Varun",
+  "vendor": {
+    "name": "Atlassian",
+    "url": "https://connect.atlassian.com"
+  },
+  "baseUrl": "https://funny-bronze-opinion.glitch.me",
+  "links": {
+    "self": "https://funny-bronze-opinion.glitch.me/atlassian-connect.json",
+    "homepage": "https://funny-bronze-opinion.glitch.me/atlassian-connect.json"
+  },
+  "scopes": [
+    "READ",
+    "WRITE"
+  ],
+  "authentication": {
+    "type": "jwt"
+  },
+  "lifecycle": {
+    "installed": "/installed"
+  },
+  "modules": {
+    "jiraWorkflowPostFunctions": [
+      {
+        "key": "wf-pf-test",
+        "create": {
+          "url": "/create"
+        },
+        "description": {
+          "value": "Varun's addon to try and mimic Script Runner behaviour."
+        },
+        "edit": {
+          "url": "/edit?id={postFunction.id}"
+        },
+        "name": {
+          "value": "My function example"
+        },
+        "triggered": {
+          "url": "/triggered"
+        },
+        "view": {
+          "url": "/view?id={postFunction.id}#config={postFunction.config}"
+        }
+      }
+    ]
+  }
+}
