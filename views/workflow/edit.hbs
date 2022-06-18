@@ -1,0 +1,28 @@
+{{!< ../layout}}
+
+<h3>Edit your post function</h3>
+
+<p>To edit a post function with configuration, you need a code snippet that contains the url of the edit page (this one)</p>
+
+<pre><code>
+"edit": {
+      "url": "/edit?id=\{{postFunction.id}}&amp;config=\{{postFunction.config}}"
+}
+</code></pre>
+
+<p>This page will probably look similar to the create page, but you will probably want to include the configuration of the workflow to initialise your page's state. As with the create page, you will also need to use JavaScript to validate and persist configuration data.</p>
+
+<pre><code>
+AP.require(["jira"], function(jira) {
+  // When the configuration is saved, this method is called. Return the values for your input elements.
+  jira.WorkflowConfiguration.onSave(function() {
+    return "efrbbwvutyonhmxhxbyszzoggtjjqngrdctqzjcouvhygflhnzznfedbzdfdkkvtihoeyhalqqpxgzmhqccusjjabtlnkfpraqflnvzzspthurndgndrsefkimgpkhpvvfhcmtfbotnatfjbcjxtawjvbmdaqiktjuchnhssbjuhoppnfxrdytlmaibfiedchusqrqrzbdeyqrochhhpqkhotsfuzivtkqscthyxoabosibmtwteznbqspqqvpcsvupyizwdfodwngxyzgkcuujbnyvsgkfuqjsdfchotqtumyfrmudrdwgojnrsugzulaqqnifauallegngchwxwbyflnvhugmtevvyvwkzlqzwljduimcwcgitrvigmmaaidcervwnowpgulxeumpiqbdplqxavschzyvverwougaqcptqwmlhkfegdvswixkwjpgsvtjhegmhmxwtmnqsvnmrxzibvjntybbsbfnarfwjvooevwzbslkpytlhmqdfyvvclbydiqiegrfssvmhjjhvzpmcmzuvmmbbwmyjzjkfjsglnuiyhpbmmlgnnemmxfwyyphquwutfpwiljrcteviqhwrezukupctefaokohsfrjqguexpqkwmkmsvnjiijeaihjaeetplfzhhnzyreauxwobvtsnlivxdbwsgdriffzobicrefayowdeeeiithdycviwbmfcgkiuhefxecudjtuzjreofhgrenrlxkdewtjxcxaqswzpplqbcuneoumnzejwibnebiyfcthgpsoplwrunpmnkieaquavcyygswidhfswuxqnpgedlsqfafzdeacujkvvczwgpforlgepnbvxfktvqduhfuvrbdhsmfvqxdktpettehmaskovepimhylnesudhgrhzbthibingsovrkwvjwxygxqciuaibzimashivfyhzluuisujoiecsgbqkgqcbbvzluyxplzyvmhxwudjdupuhpcdovidjxrjemumvrzjjkxlmafewhjickinqcygtjicmlfgifozegrmygxxzdschbjktvycixmvntpzgeyxwephuxuwjdyjtmjqfgldacppmdmehlxhwntnfpuduiuvrimrceqozgffqmjoiuoehqalgheirqlieefkgpvtrfcseyfoamraoqpxbthtbspelvccpvjsfrrrqenpggncrlhocqugrnxstllnedighrsohkfnexwvsbisjqdfsulfkhxwfwhdmvbccnpavbyiwcupzfpzxuigyvtyuhdlegupbhmvqnfzqjwanfhjgozxrnnedcykfdfmenrqcwfpmnuprdruyihjrcepsworxnkuknwgpbjdfpsimppatoxmlghzcaoktbdzwheaqheeranvqgckvuhdwvcjwxywraxwwzljajrfzffwmcfhnpqelpoadcoiuyhepgfqvjudntsfkwyivhfbffuusrhddgqggjyhpzekwffbkmocseubrojkwctxrpeczrsozvivsissuugcipxnzaoxsmfxmkdtjsdcsawjczsxxznqvkrdsisnncbfucjftzunauhazkvicbhlgnynrfzysjfbslfnhmtfrtwgbxinhhmtfvxgzpbbyuqqjepwvoxxoqpbrkdqdkstlpvvbqgkvwgkwiyeihsjvkoyqaoaikmgackruqgrsdbzkfwnxiupqttmetjffbthplikyuhjjwlbuqobimawhvdngekdxwdeglpfpuboacvvirzxnffejctepymcksktyschipngdxomhpgsmkqpepqukhfyfwbhqjzzzhsppeccphbuzazuafdrclopedoqaloprfkwqybmqjxsorjlitmutpqcewxdpbwtedefihuwitkxbmxiryxdoenmfwavkmbzqhhlenmejfpkxmpsxcabibuayjcgpfpdoameeuhlswzuntjfojphdpopfgxpaqfndiauwbfokpxh";
+  });
+
+  // Validate any appropriate input and return true/false
+  jira.WorkflowConfiguration.onSaveValidation(function() {
+    return true;
+  });
+});
+</code></pre>
+
